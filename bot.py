@@ -2,7 +2,8 @@
 # driver for the bot
 # is the brains of this whole operation
 
-import os
+import os, webserver
+from webserver import keep_alive
 import discord
 
 from discord.ext import commands
@@ -94,5 +95,5 @@ for filename in os.listdir('./commands/src'):
   if filename.endswith('.py'):
     bot.load_extension(f'commands.src.{filename[:-3]}')
 
-
-bot.run(TOKEN)
+keep_alive()
+bot.run(TOKEN, bot=True)
